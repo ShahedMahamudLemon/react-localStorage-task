@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 const OrderPage = () => {
   const [localData, setLocalData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     setLocalData(JSON.parse(localStorage.getItem("orders")));
   }, []);
@@ -323,6 +325,17 @@ const OrderPage = () => {
               <input type="text" className="formInput" />
             </div>
           </Col>
+          <div className="d-grid">
+            <Button
+              variant="secondary"
+              className="my-3"
+              onClick={() => {
+                navigate("/orders");
+              }}
+            >
+              Total Order
+            </Button>
+          </div>
         </Row>
       </Container>
     </div>
